@@ -13,7 +13,7 @@ int main()
     struct Student s;
 
     for(i = 0; i < 4; i++) {
-        printf("\nEnter details for Student %d:\n", i + 1);
+        printf("Enter details for Student %d:\n", i + 1);
         printf("Roll Number: ");
         scanf("%d", &s[i].roll_no);
         printf("Name: ");
