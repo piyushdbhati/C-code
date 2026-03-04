@@ -12,9 +12,9 @@ tax=0.02* grosssal;
 
 net= grosssal-tax;
 printf("%d", net);
- printf("\nBasic Salary: %.2f", basicsal);
-    printf("\nHRA (10%%): %.2f", hra);
-    printf("\nTA (5%%): %.2f", ta);
-    printf("\nGross Salary: %.2f", grosssal);
-    printf("\nTax (2%%): %.2f", tax);
-    printf("\nNet Salary: %.2f\n", net);
+ printf("Basic Salary: %f", basicsal);
+    printf("\nHRA (10%%): %f", hra);
+    printf("\nTA (5%%): %f", ta);
+    printf("\nGross Salary: %f", grosssal);
+    printf("\nTax (2%%): %f", tax);
+    printf("\nNet Salary: %f", net);
