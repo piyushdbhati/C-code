@@ -22,7 +22,7 @@ int main()
         scanf("%f", &s[i].marks);
     }
     for(i = 0; i < 4; i++) {
-        printf("Student %d | Roll No: %d | Name: %s | Marks: %.2f\n", 
+        printf("Student %d | Roll No: %d | Name: %s | Marks: %f\n", 
                 i + 1, s[i].roll_no, s[i].name, s[i].marks);
     }
 
