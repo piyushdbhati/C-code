@@ -29,21 +29,21 @@ void add() {
     float a, b;
     printf("Enter two numbers: ");
     scanf("%f %f", &a, &b);
-    printf("Result: %f\n", a + b);
+    printf("Result: %f", a + b);
 }
 
 void sub() {
     float a, b;
     printf("Enter two numbers: ");
     scanf("%f %f", &a, &b);
-    printf("Result: %f\n", a - b);
+    printf("Result: %f", a - b);
 }
 
 void mul() {
     float a, b;
     printf("Enter two numbers: ");
     scanf("%f %f", &a, &b);
-    printf("Result: %f\n", a * b);
+    printf("Result: %f", a * b);
 }
 
 void div() {
@@ -51,7 +51,7 @@ void div() {
     printf("Enter two numbers: ");
     scanf("%f %f", &a, &b);
     if(b != 0) 
-        printf("Result: %f\n", a / b);
+        printf("Result: %f", a / b);
     else 
-        printf("Error: Cannot divide by zero!\n");
+        printf("Error");
 }
