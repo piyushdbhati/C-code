@@ -1,0 +1,100 @@
+#include <stdio.h>
+struct student{
+    char name[20];
+    int rollno ;
+    int marks[5];
+    int total;
+    float percentage;
+};
+
+int main ()
+{
+    FILE *fp;
+    fp=fopen("C:\\Users\\Mansi\\OneDrive\\Desktop\\students.txt", "a");
+     if (fp == NULL)
+      {
+        printf("Error opening file!\n");
+            return 1;
+        
+     }
+    printf("Enter no of students : ");
+    int n ,i;
+    scanf("%d", &n);
+    struct student s[20];
+    for (i=0;i<n;i++)
+    {
+        printf(" Enter student name (without spaces) : ");
+        scanf("%s", s[i].name);
+
+        printf(" Enter student rollno : ");
+        scanf("%d", &s[i].rollno);
+
+        printf(" Enter marks of 5 subjects : ");
+        for (int j=0; j<5; j++)
+        {
+            scanf("%d", &s[i].marks[j]);
+
+        }
+
+        s[i].total = 0;                         //total and percentage of ith student
+        for (int j=0; j<5; j++)
+        {
+            s[i].total  = s[i].total + s[i].marks[j];
+        
+        } s[i].percentage = s[i].total / 5.0;
+        
+    fprintf( fp, "%s %d " , s[i].name, s[i].rollno);
+    for( int j=0; j<5 ; j++)
+    {
+        fprintf( fp, "%d ", s[i].marks[j]);
+    }
+    fprintf( fp, "%d %f", s[i].total, s[i].percentage);
+    }
+    fclose(fp);
+
+
+
+    printf(" Do you want to update any student details ( 0 for no, 1 for yes) : ");
+    int update;
+    scanf("%d", &update);
+    fp=fopen("C:\\Users\\Mansi\\OneDrive\\Desktop\\students.txt", "w");
+    
+    if ( update == 1)
+    {
+        printf("Enter roll no of student  you want to update : ");
+        int updaterollno;
+        scanf("%d", &updaterollno);
+
+        for (i=0;i<n;i++)
+        {
+            if (s[i].rollno == updaterollno )
+            {
+                printf(" Enter new name of student (without spaces ): ");
+                scanf("%s", s[i].name);
+
+                printf(" Enter new rollno of student : ");
+                scanf("%d", &s[i].rollno);
+
+                printf(" Enter new marks of 5 subjects : ");
+                s[i].total = 0;
+                for ( int j=0 ; j<5 ; j++) 
+                {
+                    scanf("%d", &s[i].marks[j]);
+                    s[i].total += s[i].marks[j];
+                }
+              
+
+            }
+             s[i].percentage = s[i].total / 5.0;
+             fprintf(fp, "%s %d  ", s[i].name, s[i].rollno); 
+             for(int j= 0; j<5 ; j++){
+                fprintf(fp,"%d ", s[i].marks[j]);
+             }
+              fprintf(fp, "%d %f", s[i].total, s[i].percentage);
+
+        }
+    }
+    fclose(fp);
+    return 0;
+    
+}
