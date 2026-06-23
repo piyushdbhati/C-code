@@ -1,0 +1,222 @@
+#include <stdio.h>
+int main()
+{
+    char board[3][3] ={{'1','2','3'},
+                       {'4','5','6'},
+                       {'7','8','9'}};
+                       
+    int i,j ;
+    char currentplayer ='X';
+    int choice;
+    for(int turn=0; turn<9; turn++)
+    {
+        printf("Current player is  %c:\n", currentplayer);
+    
+    for(i=0; i<3;i++)
+{
+    printf("\n");
+
+    for (j=0;j<3;j++)
+    {
+        printf("|");
+        printf("%c", board[i][j]);
+
+    }
+    printf("|\n");
+
+    for(j=0;j<3;j++)
+    {
+        printf("----");
+    }
+
+}
+
+printf("\n Enter your choice ");
+scanf("%d", &choice);
+
+if(choice==1)
+{
+    if(board[0][0]=='X' || board[0][0]=='O')
+    {
+        printf("Invalid move. Try again.\n");
+        turn--;
+        continue;
+    }
+    board[0][0]=currentplayer;
+    
+}
+else if(choice==2)
+{
+    if(board[0][1]=='X' || board[0][1]=='O')
+    {
+        printf("Invalid move. Try again.\n");
+        turn--;
+        continue;
+    }
+    
+
+    board[0][1]=currentplayer;
+}
+else if(choice==3)
+{
+    if(board[0][2]=='X' || board[0][2]=='O')
+    {
+        printf("Invalid move. Try again.\n");
+        turn--;
+        continue;
+    }
+    board[0][2]=currentplayer;
+    
+
+}
+else if(choice==4)
+{
+    if(board[1][0]=='X' || board[1][0]=='O')
+    {
+        printf("Invalid move. Try again.\n");
+        turn--;
+        continue;
+    }
+    board[1][0]=currentplayer;
+    
+    
+}
+else if(choice==5)
+{
+    if(board[1][1]=='X' || board[1][1]=='O')
+    {
+        printf("Invalid move. Try again.\n");
+        turn--;
+        continue;
+    }
+    board[1][1]=currentplayer;
+    
+   
+
+}
+else if(choice==6)
+{
+    if(board[1][2]=='X' || board[1][2]=='O')
+    {
+        printf("Invalid move. Try again.\n");
+        turn--;
+        continue;
+    }
+    board[1][2]=currentplayer;
+    
+}
+else if(choice==7)
+{
+    if(board[2][0]=='X' || board[2][0]=='O')
+    {
+        printf("Invalid move. Try again.\n");
+        turn--;
+        continue;
+    }
+    board[2][0]=currentplayer;
+    
+
+}
+else if(choice==8)
+{
+    if(board[2][1]=='X' || board[2][1]=='O')
+    {
+        printf("Invalid move. Try again.\n");
+        turn--;
+        continue;
+    }
+    board[2][1]=currentplayer;
+    
+
+
+}
+else if(choice==9)
+{
+    if(board[2][2]=='X' || board[2][2]=='O')
+    {
+        printf("Invalid move. Try again.\n");
+        turn--;
+        continue;
+    }
+    board[2][2]=currentplayer;
+    
+    
+}
+
+
+
+printf("Updated Board:");
+
+  for(i=0; i<3;i++)
+{
+    printf("\n");
+
+    for (j=0;j<3;j++)
+    {
+        printf("|");
+        printf("%c", board[i][j]);
+
+    }
+    printf("|\n");
+
+    for(j=0;j<3;j++)
+    {
+        printf("----");
+    }
+
+}
+if(board[0][0]== currentplayer && board[0][1]== currentplayer && board[0][2]== currentplayer)
+    {
+        printf("Player %c wins!\n", currentplayer);
+        return 0;
+    }
+else if (board[1][0]== currentplayer && board[1][1]== currentplayer && board[1][2]== currentplayer)
+    {
+        printf("Player %c wins\n", currentplayer);
+        return 0;       
+    }
+else if (board[2][0]== currentplayer && board[2][1]== currentplayer && board[2][2]== currentplayer)
+    {
+        printf("Player %c wins\n", currentplayer);
+        return 0;       
+    }
+else if (board[0][0]== currentplayer && board[1][1]== currentplayer && board[2][2]== currentplayer)
+    {
+        printf("Player %c wins\n", currentplayer);
+        return 0;       
+    }
+else if (board[0][2]== currentplayer && board[1][1]== currentplayer && board[2][0]== currentplayer)
+    {
+        printf("Player %c wins\n", currentplayer);
+        return 0;       
+    }
+else if (board[0][0]== currentplayer && board[1][0]== currentplayer && board[2][0]== currentplayer)
+    {
+        printf("Player %c wins\n", currentplayer);
+        return 0;       
+    }
+else if (board[0][2]== currentplayer && board[1][2]== currentplayer && board[2][2]== currentplayer)
+    {
+        printf("Player %c wins\n", currentplayer);
+        return 0;       
+    }
+else if (board[0][1]== currentplayer && board[1][1]== currentplayer && board[2][1]== currentplayer)
+    {
+        printf("Player %c wins\n", currentplayer);
+        return 0;       
+    }
+if(currentplayer=='X')
+{
+    currentplayer='O';
+}
+else{
+    currentplayer='X';
+
+}
+}
+
+
+
+
+return 0;
+ }
