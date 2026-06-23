@@ -1,0 +1,161 @@
+#include<stdio.h>
+struct book
+{
+    char name[20];
+    int bookid;
+    char author[20];
+    int quantity;
+};
+
+int main()
+{
+    FILE *fp;
+    fp= fopen("C:\\Users\\Mansi\\OneDrive\\Desktop\\books.txt", "a");
+    if (fp == NULL) {
+        printf("Error opening file!\n");
+        return 1;
+    }
+    int i,n;
+
+    printf(" Enter number of books to be added: ");
+    scanf(" %d", &n);
+
+
+    struct book b[20];
+    for (i=0; i<n;i++){
+
+        printf("Enter book name(without spaces) : ");
+        scanf("%s", b[i].name);
+
+        printf(" Enter book id :");
+        scanf("%d", &b[i].bookid);
+
+        printf("Enter book author name (without spaces ): ");
+        scanf("%s", b[i].author);
+
+        printf (" Enter boook quantity: ");
+        scanf("%d" , &b[i].quantity);
+
+        fprintf(fp, "%s %d %s %d\n", b[i].name, b[i].bookid, b[i].author, b[i].quantity);
+
+    
+    }
+    printf(" do add any book ( 0 for no, 1 for yes) :");
+    int choice;
+    scanf("%d", &choice);
+
+    if ( choice ==1 ){
+        printf(" Enter name of new bbook ( without spaces ): ");
+        scanf( " %s", b[i].name);
+
+        printf(" Enter book id :");
+        scanf("%d", &b[i].bookid);
+
+        printf(" Enter author name (without spaces): ");
+        scanf ("%s", b[i].author);
+
+        printf(" Enter book quantity: ");   
+        scanf("%d", &b[i].quantity);
+
+        fprintf(fp, "%s %d %s %d\n", b[i].name, b[i].bookid, b[i].author, b[i].quantity);
+        n++;
+    }
+    else if (choice == 0){
+        printf ( " no book added ");
+
+    }
+
+    printf (" Do you want to search any book ( 0 for no, 1 for yes) :");
+    int search;
+    scanf("%d", &search);
+
+    if ( search ==1 ){
+        printf("  Enter book id to search : ");
+        int bookid;
+        scanf("%d", &bookid);
+
+        for ( i=0; i<n;i++){
+            if (b[i].bookid == bookid)
+            {
+
+                printf(" Book found!\n");
+                printf(" Name: %s\n", b[i].name);
+                printf(" Author: %s\n", b[i].author);
+                printf(" Quantity: %d\n", b[i].quantity);
+                break;
+            }
+
+        }
+    }
+    printf(" Do you want to update any book ( 0 for no, 1 for yes) :");
+    int update;
+    scanf("%d", &update);
+     if (update ==1)
+     {
+        printf("ENter book id to update : ");
+        int bookid;
+        scanf("%d", &bookid);
+        for ( i=0;i<n;i++)     //here  we are  first updating the array of books
+        {
+            if (b[i].bookid ==bookid)
+            {
+                printf("enter new book name (without spaces) : ");
+                scanf("%s", b[i].name);
+                printf(" Enter new author name (without spaces) : ");
+                scanf("%s", b[i].author);
+                printf(" Enter new book quantity : ");
+                scanf("%d", &b[i].quantity);
+              
+                break;
+
+            }
+
+        }
+        
+    }
+    else if (update == 0)
+    {
+        printf(" No book updated ");
+    }
+    fclose(fp);
+
+    fp= fopen("C:\\Users\\Mansi\\OneDrive\\Desktop\\books.txt", "w");  // now from here the updated array is being witten into the file 
+    for(i =0; i<n; i++){
+        fprintf(fp, "%s %d %s %d \n", b[i].name, b[i].bookid, b[i].author, b[i].quantity);
+
+    }
+    fclose(fp);
+
+    printf(" Do you want to delete any book ( 0 for no, 1 for yes) :");
+    int delete;
+    scanf("%d", &delete);
+     if ( delete ==1 )
+     {
+        printf(" enter book id you want to delete");
+        int deleteid;
+        scanf("%d", &deleteid);       
+
+        for (i=0; i<n; i++)
+        {
+            if (b[i].bookid == deleteid)
+            {
+                for (int j=i; j<n-1; j++){
+                    b[j] = b[j+1];
+                }
+                n--;
+                break;
+                
+            }
+         }
+    }
+
+    fp= fopen("C:\\Users\\Mansi\\OneDrive\\Desktop\\books.txt", "w");  // now from here the deleted  array is being witten into the file
+    for(i =0; i<n; i++){
+        fprintf(fp, "%s %d %s %d \n", b[i].name, b[i].bookid, b[i].author, b[i].quantity);
+
+    }
+    fclose(fp);
+
+    return 0;
+}
+    
