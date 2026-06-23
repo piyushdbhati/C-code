@@ -1,0 +1,111 @@
+#include <stdio.h>
+struct student
+{
+    char name[20];
+    int rollno,update,search;
+    int marks[5];
+};
+ int main() 
+{
+    FILE *fp;
+    fp = fopen("C:\\Users\\Mansi\\OneDrive\\Desktop\\students.txt", "a");
+    int i,j,z,update,search;
+    struct student s[20];
+
+    for(i=0; i<2; i++)
+{
+    printf("Enter student naME(without space): ");
+    scanf("%s", s[i].name);
+
+    printf("Enter student rollno : ");
+    scanf("%d", &s[i].rollno);
+
+    for(j=0; j<2; j++)
+    {
+
+     printf("Enter student marks : ");
+     scanf("%d", &s[i].marks[j]);
+    }
+    printf("\n");
+    printf("\n");
+}
+
+printf("student details are aaas follows:\n ");
+
+for(i=0; i<2;i++)
+{
+    printf(" name of student is  %s\n", s[i].name);
+    printf(" rollno of student is  %d\n", s[i].rollno);
+    for(j=0; j<2;j++){
+
+    printf(" marks  %d of student  is  %d\n",j, s[i].marks[j]);
+    }
+    printf("\n");
+    printf("\n");
+
+ 
+    fprintf(fp,"%s %d %d %d\n", s[i].name, s[i].rollno, s[i].marks[0], s[i].marks[1]);
+    
+
+}
+fclose(fp);
+
+printf(" do you want to search any student( o for no , 1 for yes) : ");
+scanf("%d", &search);
+if( search == 1){
+
+printf("enter student roll no to search : ");
+scanf("%d", &z);
+
+for(i=0;i<2;i++)
+{
+    if(s[i].rollno ==z)
+    {
+        printf("Name of the student is : %s\n", s[i].name);
+        printf(" Roll no of the student is : %d\n", s[i].rollno);
+        printf(" Marks of the student are : ");
+        for(j=0;j<2;j++)
+        {
+            printf("%d ", s[i].marks[j]);
+        }
+        printf("\n");
+    }
+
+}
+}
+else{
+    printf("no search performed");
+}
+
+printf("do you want to update student marks (1 for yes, 0 for no): ");
+scanf("%d", &update);
+
+if (update == 1)
+{
+    printf("Enter student rollno to update marks");
+    scanf("%d", &z);
+
+    for(i=0;i<2;i++)
+    {
+        if(s[i].rollno == z)
+        {
+            printf( " Enter new marks for student %s: ", s[i].name);
+            for(j=0;j<2;j++)
+            {
+                scanf("%d", &s[i].marks[j]);
+                
+            }
+        }
+    }
+
+}
+else if (update ==0)
+{
+    printf("No updates made.\n");
+}
+
+
+
+  
+    return 0;
+}
