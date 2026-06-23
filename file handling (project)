@@ -1,0 +1,15 @@
+#include <stdio.h>
+
+int main()
+{
+    FILE *fp;
+
+    fp = fopen("C:\\Users\\Mansi\\OneDrive\\Desktop\\data.txt", "a");
+
+    fprintf(fp, "Hello World");
+    printf("\n");
+
+    fclose(fp);
+
+    return 0;
+}
